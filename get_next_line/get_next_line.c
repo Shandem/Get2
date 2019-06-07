@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joshguti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/07 15:04:37 by joshguti          #+#    #+#             */
+/*   Updated: 2019/06/07 15:11:18 by joshguti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 #include "libft/libft.h"
 
-int	fd_copy(char **line, char *content, char c)
+int		fd_copy(char **line, char *content, char c)
 {
 	int i;
 
@@ -13,9 +25,9 @@ int	fd_copy(char **line, char *content, char c)
 	return (i);
 }
 
-int	read_thru(const int fd, char **content)
+int		read_thru(const int fd, char **content)
 {
-	int	result;
+	int		result;
 	char	buff[BUFF_SIZE + 1];
 	char	*tmp;
 
@@ -27,11 +39,10 @@ int	read_thru(const int fd, char **content)
 			return (-1);
 		free(tmp);
 		if (ft_strchr(buff, ENDL))
-			break;
+			break ;
 	}
 	return (result);
 }
-
 
 t_list	*set_struct(int fd, t_list **hist)
 {
@@ -51,14 +62,13 @@ t_list	*set_struct(int fd, t_list **hist)
 	return (tmp);
 }
 
-
-int	get_next_line(const int fd, char **line)
+int		get_next_line(const int fd, char **line)
 {
-	char		*tmp;
-	char		buff[BUFF_SIZE + 1];
+	char			*tmp;
+	char			buff[BUFF_SIZE + 1];
 	static t_list	*hist;
-	t_list		*start;
-	size_t		result;
+	t_list			*start;
+	size_t			result;
 
 	if (fd < 0 || !line || (read(fd, buff, 0)) < 0 ||
 			(!(start = set_struct(fd, &hist))))
