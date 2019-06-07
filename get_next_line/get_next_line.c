@@ -1,5 +1,5 @@
 #include "get_next_line.h"
-#include "Libft/libft.h"
+#include "libft/libft.h"
 
 int	fd_copy(char **line, char *content, char c)
 {
